@@ -1,0 +1,139 @@
+ //对应音符和频率值
+ #define do 261.6
+ #define re 293.6
+ #define mi 329.6
+ #define fa 349.2
+ #define so 392
+ #define la 440
+ #define xi 493.8
+ #define hdo 523.3
+ #define hre 587
+ #define hmi 659
+ #define hfa 698
+ #define hso 784
+ #define hla 880
+ #define hxi 988
+ #define ldo 130.8
+ #define lre 147
+ #define lmi 165
+ #define lfa 174.6
+ #define lso 196
+ #define lla 220
+ #define lxi 247
+ #define none 0
+ 
+ //整首曲子的音符部分
+ int tune[] =
+ {
+   lso,lso,lla,lso,do,lxi,
+   lso,lso,lla,lso,re,do,
+   lso,lso,so,mi,do,lxi,lla,
+   fa,fa,mi,do,re,do,
+   none,none,none,none,do,re,
+   mi,do,re,mi,do,re,so,
+   do,lla,lxi,do,lla,lxi,mi,
+   lla,lfa,lso,lla,lfa,lso,do,
+   lfa,lmi,lfa,lso,lla,lso,lla,lxi,do,lxi,do,re,mi,re,mi,fa,
+   so,none,none,
+   mi,so,so,la,so,none,
+   re,so,so,la,so,none,
+   do,do,do,do,do,hdo,
+   xi,so,so,la,so,
+   la,hdo,hdo,hre,hdo,hdo,la,
+   so,la,la,so,mi,
+   fa,fa,mi,fa,mi,do,re,none,
+   mi,so,so,la,so,none,
+   re,so,so,la,so,none,
+   do,do,do,do,do,hdo,hdo,
+   xi,so,so,la,so,
+   la,hdo,hdo,hre,hdo,hdo,la,
+   so,hmi,hmi,hre,hdo,
+   la,la,so,la,la,hdo,hre,none,
+   none,so,hmi,hdo,hre,hmi,hdo,
+   hre,none,so,none,so,none,mi,
+   hdo,la,xi,hdo,la,la,
+   xi,none,hso,none,hso,
+   hfa,hfa,hmi,hre,hmi,hfa,
+   hmi,none,hre,none,hdo,la,la,
+   hdo,hdo,la,hdo,hre,hmi,hre,
+   none,so,hmi,hdo,hre,hmi,hdo,hdo,
+   hre,none,so,none,so,none,mi,
+   hdo,la,xi,hdo,la,la,
+   xi,none,hso,none,hso,
+   hfa,hfa,hmi,hre,hmi,hfa,
+   hmi,none,hre,none,hdo,la,la,
+   hdo,hdo,la,hdo,hre,hmi,
+   hre,none,xi,hdo,hdo,hre,hdo,
+   hmi,hdo,hre,hmi,hdo,hre,hso,
+   hdo,la,xi,hdo,la,xi,hmi,
+   la,fa,so,la,fa,so,hdo,
+   fa,mi,re,do,re,do,lxi,lla,lso,so,none
+ };
+ 
+ //曲子的节拍，即音符持续时间
+ float duration[] =
+ {
+   1,1,2,2,2,4,
+   1,1,2,2,2,4,
+   1,1,2,2,2,2,4,
+   1,1,2,2,2,6,
+   1.4,1.4,1.4,0.7,0.35,0.35,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,0.35,
+   2.8,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,2.8,
+   0.7,0.7,0.7,0.7,1.4,0.7,0.7,
+   0.7,0.7,0.7,0.7,2.8,
+   0.7,1.4,0.7,0.7,1.4,0.7,2.8,2.8,
+   0.7,0.7,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,0.7,0.7,
+   0.7,0.7,0.7,0.7,2.8,
+   0.7,0.7,0.7,0.7,1.4,0.7,0.7,
+   0.7,0.7,0.7,0.7,2.8,
+   0.7,1.4,0.7,0.7,1.4,0.7,4.2,1.4,
+   0.7,0.7,1.4,1.05,0.35,1.4,1.4,
+   0.7,0.7,0.7,0.7,1.4,0.7,0.7,
+   1.4,1.05,0.35,0.7,0.7,1.4,
+   0.7,0.7,0.7,0.7,2.8,
+   1.4,1.05,0.35,1.4,1.05,0.35,
+   0.7,0.7,0.7,0.7,0.7,0.7,1.4,
+   1.4,1.05,0.35,1.4,0.7,0.7,4.2,
+   0.7,0.7,1.4,1.05,0.35,1.4,0.7,0.7,
+   0.7,0.7,0.7,0.7,1.4,0.7,0.7,
+   1.4,1.05,0.35,0.7,0.7,1.4,
+   0.7,0.7,0.7,0.7,2.8,
+   1.4,1.05,0.35,1.4,1.05,0.35,
+   0.7,0.7,0.7,0.7,0.7,0.7,1.4,
+   1.4,1.05,0.35,1.4,0.7,0.7,
+   1.4,0.7,0.7,1.4,0.7,0.7,4.2,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.7,0.35,0.35,0.7,0.7,1.4,1.4,
+   0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,2.8,2.8
+ };
+ 
+ int length;//定义一个变量用来表示共有多少个音符
+ int tonePin = 4; //蜂鸣器的pin
+ 
+ void setup()
+ {
+   pinMode(tonePin, OUTPUT); //设置蜂鸣器的pin为输出模式
+   length = sizeof(tune) / sizeof(tune[0]); //这里用了一个sizeof函数，查出数组里有多少个音符
+ }
+ 
+ void loop()
+ {
+   for (int x = 0; x < length; x++) //循环音符的次数
+   {
+     tone(tonePin, tune[x]); //依次播放tune数组元素，即每个音符
+     delay(400 * duration[x]); //每个音符持续的时间，即节拍duration，400是调整时间的越大，曲子速度越慢，越小曲子速度越快
+     noTone(tonePin);//停止当前音符，进入下一音符
+   }
+   delay(5000);//等待5秒后，循环重新开始
+ }
